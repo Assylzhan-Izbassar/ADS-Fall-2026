@@ -1,0 +1,5 @@
+1.cpp - Checking is prime or not.
+2.cpp - Optimize prime checking & prime counting.
+3.cpp - All primes until n with Eratosthenes.
+4.cpp - Prime factorization.
+5.cpp - Finding GCD with naive & Euclid approaches.
