@@ -13,19 +13,32 @@ public:
 class LinkedList {
 private:
     Node* head;
+    Node* tail;
+
+    Node* reverseRec(Node* currNode) {
+        if (currNode->next == nullptr) {
+            return currNode;
+        }
+        Node* newHead = reverseRec(currNode->next);
+        currNode->next->next = currNode;
+        currNode->next = nullptr;
+        return newHead;
+    }
 public:
     LinkedList(): head(nullptr) {}
 
     void push_back(int data) {
         if (head == nullptr) {
-            head = new Node(data);
+            tail = new Node(data);
+            head = tail;
         } else {
-            Node* currNode = head;
-            while (currNode->next != nullptr) {
-                currNode = currNode->next;
-            }
-            currNode->next = new Node(data);
+            tail->next = new Node(data);
+            tail = tail->next;
         }
+    }
+
+    void reverse() {
+        head = reverseRec(head);
     }
 
     void print() {
@@ -49,6 +62,10 @@ int main() {
     ll->push_back(34);
     ll->push_back(74);
     ll->push_back(100);
+
+    ll->print();
+
+    ll->reverse();
 
     ll->print();
 
