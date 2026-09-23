@@ -49,22 +49,12 @@ private:
             // case3
             else {
                 Node* toBeReplaced = node->right;
-                while (true) {
-                    if (!toBeReplaced && toBeReplaced ->left == nullptr && toBeReplaced->right == nullptr) {
-                        break;
-                    }
-                    if (toBeReplaced->right != nullptr) {
-                        toBeReplaced = toBeReplaced->right;
-                        if (toBeReplaced->left != nullptr) {
-                            toBeReplaced = toBeReplaced->left;
-                        }
-                    }
+                while (toBeReplaced->left != nullptr) {
+                    toBeReplaced = toBeReplaced->left;
                 }
                 node->value = toBeReplaced->value;
-                delete toBeReplaced;
-                return node;
+                node->right = removeRec(node->right, toBeReplaced->value);
             }
-
         } else if (node->value > value) {
             node->left = removeRec(node->left, value);
         } else {
