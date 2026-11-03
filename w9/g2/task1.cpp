@@ -66,11 +66,13 @@ bool canChoose(vector<vector<int>>& groups, vector<int>& nums) {
     for (vector<int> group : groups) {
         vector<int> result = kmp(nums, group);
         if (!result.empty()) {
-            print(result);
+            // print(result);
             int validPos = -1;
             if (lastPos == -1) {
-                validPos = result[0];
+                lastPos = result[0];
                 lastPosLen = group.size();
+
+                validPos = lastPos;
             } else {
                 for (int x : result) {
                     if (lastPos + lastPosLen - 1 < x) {
@@ -81,7 +83,7 @@ bool canChoose(vector<vector<int>>& groups, vector<int>& nums) {
                     }
                 }
             }
-            cout << lastPos << " " << lastPosLen << endl;
+            // cout << lastPos << " " << lastPosLen << endl;
             pos.push_back(validPos);
         }
     }
