@@ -12,4 +12,6 @@ void print(vector<int>& arr) {
     cout << endl;
 }
 
-int main() { return 0; }
+int main() { 
+    return 0; 
+}
