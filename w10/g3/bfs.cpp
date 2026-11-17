@@ -64,7 +64,7 @@ int main() {
         adj[u].push_back(v);
     }
 
-    vector<int> result = bfs(4, adj);
+    vector<int> result = bfs(0, adj);
 
     print(result);
 

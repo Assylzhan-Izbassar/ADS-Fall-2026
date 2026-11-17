@@ -32,7 +32,7 @@ vector<int> bfs(int src, vector<vector<int>>& adj) {
         q.pop(); // processed
 
         // 3. processing the neighbors of v.
-        for (int u: adj[v]) {
+        for (int u: adj[v]) { 
             if (!visited[u]) {
                 visited[u] = true;
                 q.push(u);

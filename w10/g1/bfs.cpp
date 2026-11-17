@@ -22,6 +22,9 @@ void print_ff(vector<vector<int>>& arr) {
     }
 }
 
+int vertexPass = 0;
+int edgePass = 0;
+
 void bfs(int start, vector<vector<int>>& graph) { // graph - adjacency list
     vector<bool> visited(graph.size(), false);
     queue<int> q;
@@ -40,7 +43,11 @@ void bfs(int start, vector<vector<int>>& graph) { // graph - adjacency list
         int v = q.front();
         q.pop();
 
+        vertexPass++;
+
         for (int u: graph[v]) {
+            edgePass++;
+
             if (!visited[u]) {
                 visited[u] = true;
                 result.push_back(u);
@@ -74,7 +81,9 @@ int main() {
     
     // print_ff(graph);
 
-    bfs(2, graph);
+    bfs(0, graph);
+
+    cout << vertexPass << " " << edgePass << endl;
 
     return 0; 
 }
